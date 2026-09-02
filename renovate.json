@@ -1,0 +1,8 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["local>renovate-bot/renovate-config", "local>renovate-bot/renovate-config:docker"],
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "Renovate Dashboard",
+  "assignees": ["alessandrovitali"],
+  "labels": ["renovate"]
+}
