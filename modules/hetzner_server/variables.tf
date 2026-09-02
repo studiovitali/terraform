@@ -1,6 +1,6 @@
-variable "name" {
+variable "project_name" {
   type        = string
-  description = "Host name (used as prefix for the SSH key and firewall)"
+  description = "Project / host name"
 }
 
 variable "ssh_public_key" {
@@ -8,29 +8,28 @@ variable "ssh_public_key" {
   description = "Public SSH key to manage the host"
 }
 
-variable "server_type" {
+variable "hcloud_server_type" {
   type        = string
   description = "Hetzner server type (e.g. cx22)"
 }
 
-variable "image" {
+variable "hcloud_image" {
   type        = string
   description = "OS image to boot (e.g. debian-13)"
 }
 
-variable "location" {
+variable "hcloud_location" {
   type        = string
   description = "Hetzner location (fsn1, nbg1, hel1, ash1)"
-  default     = "nbg1"
   validation {
-    condition     = contains(["fsn1", "nbg1", "hel1", "ash1"], var.location)
-    error_message = "location must be one of fsn1, nbg1, hel1, ash1."
+    condition     = contains(["fsn1", "nbg1", "hel1", "ash1"], var.hcloud_location)
+    error_message = "location must be one of fsn1, nbg1, hel1, ash1"
   }
 }
 
-variable "user_data" {
+variable "init_user_data" {
   type        = string
-  description = "Pre-rendered cloud-init user data (optional). Caller renders it from a template."
+  description = "Pre-rendered cloud-init user data (optional)"
   default     = null
 }
 

@@ -7,12 +7,12 @@ terraform {
 
 locals {
   # single naming scheme - propagates everywhere
-  key_name      = "${var.name}-key"
-  firewall_name = "${var.name}-fw"
+  ssh_key_name  = "${var.project_name}-key"
+  firewall_name = "${var.project_name}-fw"
 }
 
 resource "hcloud_ssh_key" "this" {
-  name       = local.key_name
+  name       = local.ssh_key_name
   public_key = var.ssh_public_key
 }
 
@@ -31,10 +31,10 @@ resource "hcloud_firewall" "this" {
 }
 
 resource "hcloud_server" "this" {
-  name         = var.name
-  image        = var.image
-  server_type  = var.server_type
-  location     = var.location
-  user_data    = var.user_data
+  name         = var.project_name
+  image        = var.hcloud_image
+  server_type  = var.hcloud_server_type
+  location     = var.hcloud_location
+  user_data    = var.init_user_data
   firewall_ids = [hcloud_firewall.this.id]
 }
