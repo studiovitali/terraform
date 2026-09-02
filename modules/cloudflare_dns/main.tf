@@ -16,6 +16,6 @@ resource "cloudflare_dns_record" "this" {
   name    = var.record_name
   type    = var.record_type
   content = var.record_value
-  proxied = var.proxied
-  ttl     = var.proxied ? 1 : var.ttl
+  proxied = var.cloudflare_proxied
+  ttl     = var.cloudflare_proxied ? 1 : var.record_ttl
 }

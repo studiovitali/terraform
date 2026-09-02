@@ -18,18 +18,18 @@ variable "record_value" {
   description = "Record content (IP address, target hostname, text)"
 }
 
-variable "proxied" {
+variable "cloudflare_proxied" {
   type        = bool
   description = "Route through the Cloudflare proxy (orange cloud)"
   default     = true
 }
 
-variable "ttl" {
+variable "record_ttl" {
   type        = number
   description = "TTL in seconds (ignored when proxied)"
   default     = 3600
   validation {
-    condition     = var.ttl >= 60 && var.ttl <= 86400
+    condition     = var.record_ttl >= 60 && var.record_ttl <= 86400
     error_message = "ttl must be between 60 and 86400 seconds"
   }
 }
