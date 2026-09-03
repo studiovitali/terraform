@@ -1,6 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["local>renovate-bot/renovate-config"],
-  "dependencyDashboard": true,
-  "dependencyDashboardTitle": "Renovate Dashboard"
+  "extends": ["local>renovate-bot/renovate-config"]
 }
